@@ -1,0 +1,34 @@
+[package]
+name = "validators"
+version = "0.1.0"
+description = "Common validators that can be used across projects"
+author = ["Marirs <marirs@gmail.com>"]
+categories = []
+keywords = ["validate", "valid", "crypto", "creditcards", "email", "domain"]
+license-file = "LICENSE"
+readme = "README.md"
+repository = "https://github.com/marirs/validators-rs"
+homepage = "https://github.com/marirs/validators-rs"
+edition = "2018"
+
+[dependencies]
+idna = "0.2"
+regex = "1"
+lazy_static = "1"
+
+[badges]
+travis-ci = { repository = "marirs/validators-rs" }
+
+[lib]
+name = "validators"
+path = "src/lib.rs"
+
+[profile.dev]
+opt-level = 3
+
+[profile.release]
+codegen-units = 1
+debug-assertions = false
+debug = false
+opt-level = 3
+lto = true

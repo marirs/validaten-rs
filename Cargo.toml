@@ -12,6 +12,7 @@ homepage = "https://github.com/marirs/validaten-rs"
 edition = "2018"
 
 [dependencies]
+checkluhn = { version = "0.0.1", optional = true }
 idna = "0.2"
 regex = "1"
 lazy_static = { version = "1", optional = true }
@@ -26,7 +27,8 @@ path = "src/lib.rs"
 [features]
 crypto = ["lazy_static"]
 hashes = ["lazy_static"]
-validaten-all = ["crypto", "hashes"]
+creditcard = ["lazy_static", "checkluhn"]
+validaten-all = ["crypto", "hashes", "creditcard"]
 
 [[example]]
 name = "crypto"
@@ -37,6 +39,11 @@ required-features = ["crypto"]
 name = "hash"
 path = "examples/hash.rs"
 required-features = ["hashes"]
+
+[[example]]
+name = "credit-card"
+path = "examples/credit-card.rs"
+required-features = ["creditcard"]
 
 [profile.dev]
 opt-level = 3

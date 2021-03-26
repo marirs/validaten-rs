@@ -25,12 +25,18 @@ path = "src/lib.rs"
 
 [features]
 crypto = ["lazy_static"]
-validaten-all = ["crypto"]
+hashes = ["lazy_static"]
+validaten-all = ["crypto", "hashes"]
 
 [[example]]
 name = "crypto"
 path = "examples/crypto.rs"
 required-features = ["crypto"]
+
+[[example]]
+name = "hash"
+path = "examples/hash.rs"
+required-features = ["hashes"]
 
 [profile.dev]
 opt-level = 3

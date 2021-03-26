@@ -19,7 +19,6 @@ lazy_static! {
     static ref JCB: Regex = Regex::new(r"^35").unwrap();
 }
 
-#[derive(Clone, PartialEq)]
 enum Type {
     VisaElectron,
     Maestro,

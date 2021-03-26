@@ -21,7 +21,6 @@ lazy_static! {
     static ref XRP: Regex = Regex::new(r"(?i)^r|X[0-9a-zA-Z]{33,47}$").unwrap();
 }
 
-#[derive(Clone, PartialEq)]
 enum Type {
     Bitcoin,
     BitcoinCash,

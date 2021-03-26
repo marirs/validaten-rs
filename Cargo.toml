@@ -14,7 +14,7 @@ edition = "2018"
 [dependencies]
 idna = "0.2"
 regex = "1"
-lazy_static = "1"
+lazy_static = { version = "1", optional = true }
 
 [badges]
 travis-ci = { repository = "marirs/validators-rs" }
@@ -22,6 +22,15 @@ travis-ci = { repository = "marirs/validators-rs" }
 [lib]
 name = "validators"
 path = "src/lib.rs"
+
+[features]
+crypto = ["lazy_static"]
+validators-all = ["crypto"]
+
+[[example]]
+name = "crypto"
+path = "examples/crypto.rs"
+required-features = ["crypto"]
 
 [profile.dev]
 opt-level = 3

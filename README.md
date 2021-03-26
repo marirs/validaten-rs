@@ -2,8 +2,7 @@ Validators
 -----------
 [![Build Status](https://travis-ci.com/marirs/validators-rs.svg?branch=main)](https://travis-ci.com/marirs/validators-rs)
 
-Common validators that can be used across projects.
-
+Common validators for cryptocurrency, creditcards, domain, url, etc that can be used across projects.
 #### Requirements
 - Rust
 
@@ -11,24 +10,24 @@ Common validators that can be used across projects.
 - with all validations
 ```toml
 [dependencies]
-validators = { git = "https://github.com/marirs/validators-rs", branch = "main", features = ["validators-all"] }
+validaten = { version = "0.1.0", features = ["validaten-all"] }
 ```
 - with crypto validations
 ```toml
 [dependencies]
-validators = { git = "https://github.com/marirs/validators-rs", branch = "main", features = ["crypto"] }
+validaten = { version = "0.1.0", features = ["crypto"] }
 ```
 
 ### Tests
 ```bash
-cargo test --features="validators-all"
+cargo test --features="validaten-all"
 ```
 
 ### Examples
 ```bash
 $ cargo run --example crypto --features="crypto"
 warning: unused manifest key: package.author
-   Compiling validators v0.1.0 (validators-rs)
+   Compiling validators v0.1.0 (validaten-rs)
     Finished dev [optimized + debuginfo] target(s) in 1.88s
      Running `target/debug/examples/crypto`
 1GiWxH6PzSSmbdcK72XfGpqhjSb6nae6h9 => Some("Bitcoin")

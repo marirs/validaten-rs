@@ -17,7 +17,7 @@ regex = "1"
 lazy_static = { version = "1", optional = true }
 
 [badges]
-travis-ci = { repository = "marirs/validaten-rs" }
+travis-ci = { repository = "marirs/validators-rs" }
 
 [lib]
 name = "validaten"

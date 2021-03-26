@@ -1,4 +1,4 @@
-use validators::crypto;
+use validaten::crypto;
 
 fn main() {
     println!("1GiWxH6PzSSmbdcK72XfGpqhjSb6nae6h9 => {:?}", crypto::which_cryptocurrency("1GiWxH6PzSSmbdcK72XfGpqhjSb6nae6h9"));

@@ -10,4 +10,4 @@ matrix:
     - rust: nightly
 script:
   - cargo build --verbose
-  - cargo test --features="validators-all"
+  - cargo test --features="validaten-all"

@@ -1,14 +1,14 @@
 [package]
-name = "validators"
+name = "validaten"
 version = "0.1.0"
-description = "Common validators that can be used across projects"
+description = "Common validators for cryptocurrency, creditcards, domain, url, etc that can be used across projects"
 author = ["Marirs <marirs@gmail.com>"]
 categories = []
-keywords = ["validate", "valid", "crypto", "creditcards", "email", "domain"]
+keywords = ["validate", "validators", "crypto", "creditcards", "email", "domain"]
 license-file = "LICENSE"
 readme = "README.md"
-repository = "https://github.com/marirs/validators-rs"
-homepage = "https://github.com/marirs/validators-rs"
+repository = "https://github.com/marirs/validaten-rs"
+homepage = "https://github.com/marirs/validaten-rs"
 edition = "2018"
 
 [dependencies]
@@ -17,15 +17,15 @@ regex = "1"
 lazy_static = { version = "1", optional = true }
 
 [badges]
-travis-ci = { repository = "marirs/validators-rs" }
+travis-ci = { repository = "marirs/validaten-rs" }
 
 [lib]
-name = "validators"
+name = "validaten"
 path = "src/lib.rs"
 
 [features]
 crypto = ["lazy_static"]
-validators-all = ["crypto"]
+validaten-all = ["crypto"]
 
 [[example]]
 name = "crypto"

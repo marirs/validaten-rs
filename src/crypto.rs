@@ -26,7 +26,7 @@ pub fn is_bitcoin(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_bitcoin;
+    //! use validaten::crypto::is_bitcoin;
     //! fn main() {
     //!     assert_eq!(is_bitcoin("<bitcoin address>"), false);
     //! }
@@ -43,7 +43,7 @@ pub fn is_bitcoin_cash(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_bitcoin_cash;
+    //! use validaten::crypto::is_bitcoin_cash;
     //! fn main() {
     //!     assert_eq!(is_bitcoin_cash("<bitcoin cash address>"), false);
     //! }
@@ -60,7 +60,7 @@ pub fn is_ethereum(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_ethereum;
+    //! use validaten::crypto::is_ethereum;
     //! fn main() {
     //!     assert_eq!(is_ethereum("<ethereum address>"), false);
     //! }
@@ -77,7 +77,7 @@ pub fn is_litecoin(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_litecoin;
+    //! use validaten::crypto::is_litecoin;
     //! fn main() {
     //!     assert_eq!(is_litecoin("<litecoin address>"), false);
     //! }
@@ -94,7 +94,7 @@ pub fn is_dogecoin(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_dogecoin;
+    //! use validaten::crypto::is_dogecoin;
     //! fn main() {
     //!     assert_eq!(is_dogecoin("<dodgecoin address>"), false);
     //! }
@@ -111,7 +111,7 @@ pub fn is_dash(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_dash;
+    //! use validaten::crypto::is_dash;
     //! fn main() {
     //!     assert_eq!(is_dash("<dash address>"), false);
     //! }
@@ -128,7 +128,7 @@ pub fn is_monero(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_monero;
+    //! use validaten::crypto::is_monero;
     //! fn main() {
     //!     assert_eq!(is_monero("<monero address>"), false);
     //! }
@@ -145,7 +145,7 @@ pub fn is_neo(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_neo;
+    //! use validaten::crypto::is_neo;
     //! fn main() {
     //!     assert_eq!(is_neo("<neo address>"), false);
     //! }
@@ -162,7 +162,7 @@ pub fn is_ripple(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_ripple;
+    //! use validaten::crypto::is_ripple;
     //! fn main() {
     //!     assert_eq!(is_ripple("<ripple address>"), false);
     //! }
@@ -179,7 +179,7 @@ pub fn is_cryptocurrency_any(value: &str) -> bool {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::is_cryptocurrency_any;
+    //! use validaten::crypto::is_cryptocurrency_any;
     //! fn main() {
     //!     assert_eq!(is_cryptocurrency_any("<cryptocurrency address>"), false);
     //! }
@@ -212,7 +212,7 @@ pub fn which_cryptocurrency(value: &str) -> Option<&str> {
     //!
     //! ## Example Usage
     //! ```rust
-    //! use validators::crypto::which_cryptocurrency;
+    //! use validaten::crypto::which_cryptocurrency;
     //! fn main() {
     //!     assert_eq!(which_cryptocurrency("<cryptocurrency address>"), None);
     //! }

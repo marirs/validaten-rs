@@ -53,17 +53,17 @@ impl Type {
 
     fn pattern<'a>(&self) -> &'a Regex {
         match *self {
-            Type::VisaElectron => &*VISAELECTRON,
-            Type::Maestro => &*MAESTRO,
-            Type::Forbrugsforeningen => &*FORBRUGSFORENINGEN,
-            Type::Dankort => &*DANKORT,
-            Type::Visa => &*VISA,
-            Type::MasterCard => &*MASTERCARD,
-            Type::Amex => &*AMEX,
-            Type::DinersClub => &*DINERSCLUB,
-            Type::Discover => &*DISCOVER,
-            Type::UnionPay => &*UNIONPAY,
-            Type::JCB => &*JCB,
+            Type::VisaElectron => &VISAELECTRON,
+            Type::Maestro => &MAESTRO,
+            Type::Forbrugsforeningen => &FORBRUGSFORENINGEN,
+            Type::Dankort => &DANKORT,
+            Type::Visa => &VISA,
+            Type::MasterCard => &MASTERCARD,
+            Type::Amex => &AMEX,
+            Type::DinersClub => &DINERSCLUB,
+            Type::Discover => &DISCOVER,
+            Type::UnionPay => &UNIONPAY,
+            Type::JCB => &JCB,
         }
     }
 

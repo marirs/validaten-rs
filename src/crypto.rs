@@ -21,6 +21,74 @@ lazy_static! {
     static ref XRP: Regex = Regex::new(r"(?i)^r|X[0-9a-zA-Z]{33,47}$").unwrap();
 }
 
+#[derive(Clone, PartialEq)]
+enum Type {
+    Bitcoin,
+    BitcoinCash,
+    Ethereum,
+    Litecoin,
+    Dodge,
+    Dash,
+    Monero,
+    Neo,
+    Ripple,
+}
+
+impl Type {
+    fn name<'a>(&self) -> &'a str {
+        match *self {
+            Type::Bitcoin => "Bitcoin",
+            Type::BitcoinCash => "Bitcoin Cash",
+            Type::Ethereum => "Ethereum",
+            Type::Litecoin => "Litecoin",
+            Type::Dodge => "Dodgecoin",
+            Type::Dash => "Dash",
+            Type::Monero => "Monero",
+            Type::Neo => "Neo",
+            Type::Ripple => "Ripple",
+        }
+    }
+
+    fn pattern<'a>(&self) -> &'a Regex {
+        match *self {
+            Type::Bitcoin => &BTC,
+            Type::BitcoinCash => &BCH,
+            Type::Ethereum => &ETH,
+            Type::Litecoin => &LTC,
+            Type::Dodge => &DODGE,
+            Type::Dash => &DASH,
+            Type::Monero => &XMR,
+            Type::Neo => &NEO,
+            Type::Ripple => &XRP,
+        }
+    }
+
+    fn all() -> Vec<Type> {
+        vec![
+            Type::Bitcoin,
+            Type::BitcoinCash,
+            Type::Ethereum,
+            Type::Litecoin,
+            Type::Dodge,
+            Type::Dash,
+            Type::Monero,
+            Type::Neo,
+            Type::Ripple,
+        ]
+    }
+
+}
+
+/// Evaluate CryptoCurrency & Validate
+fn validate(value: &str) -> bool {
+    for cryptocurrency in Type::all() {
+        if cryptocurrency.pattern().is_match(&value) {
+            return true
+        }
+    }
+    false
+}
+
 pub fn is_bitcoin(value: &str) -> bool {
     //! Check if the given crypto address is Bitcoin.
     //!
@@ -31,11 +99,7 @@ pub fn is_bitcoin(value: &str) -> bool {
     //!     assert_eq!(is_bitcoin("<bitcoin address>"), false);
     //! }
     //! ```
-    if BTC.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_bitcoin_cash(value: &str) -> bool {
@@ -48,11 +112,7 @@ pub fn is_bitcoin_cash(value: &str) -> bool {
     //!     assert_eq!(is_bitcoin_cash("<bitcoin cash address>"), false);
     //! }
     //! ```
-    if BCH.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_ethereum(value: &str) -> bool {
@@ -65,11 +125,7 @@ pub fn is_ethereum(value: &str) -> bool {
     //!     assert_eq!(is_ethereum("<ethereum address>"), false);
     //! }
     //! ```
-    if ETH.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_litecoin(value: &str) -> bool {
@@ -82,11 +138,7 @@ pub fn is_litecoin(value: &str) -> bool {
     //!     assert_eq!(is_litecoin("<litecoin address>"), false);
     //! }
     //! ```
-    if LTC.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_dogecoin(value: &str) -> bool {
@@ -99,11 +151,7 @@ pub fn is_dogecoin(value: &str) -> bool {
     //!     assert_eq!(is_dogecoin("<dodgecoin address>"), false);
     //! }
     //! ```
-    if DODGE.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_dash(value: &str) -> bool {
@@ -116,11 +164,7 @@ pub fn is_dash(value: &str) -> bool {
     //!     assert_eq!(is_dash("<dash address>"), false);
     //! }
     //! ```
-    if DASH.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_monero(value: &str) -> bool {
@@ -133,11 +177,7 @@ pub fn is_monero(value: &str) -> bool {
     //!     assert_eq!(is_monero("<monero address>"), false);
     //! }
     //! ```
-    if XMR.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_neo(value: &str) -> bool {
@@ -150,11 +190,7 @@ pub fn is_neo(value: &str) -> bool {
     //!     assert_eq!(is_neo("<neo address>"), false);
     //! }
     //! ```
-    if NEO.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_ripple(value: &str) -> bool {
@@ -167,11 +203,7 @@ pub fn is_ripple(value: &str) -> bool {
     //!     assert_eq!(is_ripple("<ripple address>"), false);
     //! }
     //! ```
-    if XRP.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_cryptocurrency_any(value: &str) -> bool {
@@ -184,27 +216,7 @@ pub fn is_cryptocurrency_any(value: &str) -> bool {
     //!     assert_eq!(is_cryptocurrency_any("<cryptocurrency address>"), false);
     //! }
     //! ```
-    if is_bitcoin(value) {
-        return true;
-    } else if is_bitcoin_cash(value) {
-        return true;
-    } else if is_ethereum(value) {
-        return true;
-    } else if is_litecoin(value) {
-        return true;
-    } else if is_dogecoin(value) {
-        return true;
-    } else if is_dash(value) {
-        return true;
-    } else if is_monero(value) {
-        return true;
-    } else if is_neo(value) {
-        return true;
-    } else if is_ripple(value) {
-        return true;
-    }
-
-    false
+    validate(value)
 }
 
 pub fn which_cryptocurrency(value: &str) -> Option<&str> {
@@ -217,24 +229,10 @@ pub fn which_cryptocurrency(value: &str) -> Option<&str> {
     //!     assert_eq!(which_cryptocurrency("<cryptocurrency address>"), None);
     //! }
     //! ```
-    if is_bitcoin(value) {
-        return Some("Bitcoin");
-    } else if is_bitcoin_cash(value) {
-        return Some("Bitcoin Cash");
-    } else if is_ethereum(value) {
-        return Some("Ethereum");
-    } else if is_litecoin(value) {
-        return Some("Litecoin");
-    } else if is_dogecoin(value) {
-        return Some("Dodgecoin");
-    } else if is_dash(value) {
-        return Some("Dash");
-    } else if is_monero(value) {
-        return Some("Monero");
-    } else if is_neo(value) {
-        return Some("Neo");
-    } else if is_ripple(value) {
-        return Some("Ripple");
+    for cryptocurrency in Type::all() {
+        if cryptocurrency.pattern().is_match(&value) {
+            return Some(cryptocurrency.name())
+        }
     }
     None
 }

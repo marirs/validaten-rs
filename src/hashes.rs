@@ -9,6 +9,60 @@ lazy_static! {
     static ref SHA512: Regex = Regex::new(r"^(?i)[0-9a-f]{128}$").unwrap();
 }
 
+enum Type {
+    MD5,
+    SHA1,
+    SHA224,
+    SHA256,
+    SHA384,
+    SHA512,
+}
+
+impl Type {
+    fn name<'a>(&self) -> &'a str {
+        match *self {
+            Type::MD5 => "MD5",
+            Type::SHA1 => "SHA1",
+            Type::SHA224 => "SHA224",
+            Type::SHA256 => "SHA256",
+            Type::SHA384 => "SHA384",
+            Type::SHA512 => "SHA512",
+        }
+    }
+
+    fn pattern<'a>(&self) -> &'a Regex {
+        match *self {
+            Type::MD5 => &MD5,
+            Type::SHA1 => &SHA1,
+            Type::SHA224 => &SHA224,
+            Type::SHA256 => &SHA256,
+            Type::SHA384 => &SHA384,
+            Type::SHA512 => &SHA512,
+        }
+    }
+
+    fn all() -> Vec<Type> {
+        vec![
+            Type::MD5,
+            Type::SHA1,
+            Type::SHA224,
+            Type::SHA256,
+            Type::SHA384,
+            Type::SHA512,
+        ]
+    }
+}
+
+/// Evaluate Hash Type
+fn validate(value: &str) -> bool {
+    for hash in Type::all() {
+        if hash.pattern().is_match(&value) {
+            return true
+        }
+    }
+    false
+}
+
 pub fn is_md5(value: &str) -> bool {
     //! Check if a given hash value is MD5.
     //!
@@ -20,11 +74,7 @@ pub fn is_md5(value: &str) -> bool {
     //!     assert_eq!(is_md5("<md5 value>"), false)
     //! }
     //! ```
-    if MD5.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_sha1(value: &str) -> bool {
@@ -38,11 +88,7 @@ pub fn is_sha1(value: &str) -> bool {
     //!     assert_eq!(is_sha1("<sha1 value>"), false)
     //! }
     //! ```
-    if SHA1.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_sha224(value: &str) -> bool {
@@ -56,11 +102,7 @@ pub fn is_sha224(value: &str) -> bool {
     //!     assert_eq!(is_sha224("<sha224 value>"), false)
     //! }
     //! ```
-    if SHA224.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_sha256(value: &str) -> bool {
@@ -74,11 +116,7 @@ pub fn is_sha256(value: &str) -> bool {
     //!     assert_eq!(is_sha256("<sha256 value>"), false)
     //! }
     //! ```
-    if SHA256.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_sha384(value: &str) -> bool {
@@ -92,11 +130,7 @@ pub fn is_sha384(value: &str) -> bool {
     //!     assert_eq!(is_sha384("<sha384 value>"), false)
     //! }
     //! ```
-    if SHA384.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_sha512(value: &str) -> bool {
@@ -110,11 +144,7 @@ pub fn is_sha512(value: &str) -> bool {
     //!     assert_eq!(is_sha512("<sha512 value>"), false)
     //! }
     //! ```
-    if SHA512.is_match(value) {
-        true
-    } else {
-        false
-    }
+    validate(value)
 }
 
 pub fn is_hash_any(value: &str) -> bool {
@@ -128,21 +158,7 @@ pub fn is_hash_any(value: &str) -> bool {
     //!     assert_eq!(is_hash_any("<hash value>"), false)
     //! }
     //! ```
-    if is_md5(value) {
-        return true;
-    } else if is_sha1(value) {
-        return true;
-    } else if is_sha224(value) {
-        return true;
-    } else if is_sha256(value) {
-        return true;
-    } else if is_sha384(value) {
-        return true;
-    } else if is_sha512(value) {
-        return true;
-    }
-
-    false
+    validate(value)
 }
 
 pub fn which_hash(value: &str) -> Option<&str> {
@@ -157,18 +173,10 @@ pub fn which_hash(value: &str) -> Option<&str> {
     //!     assert_eq!(which_hash("<hash value>"), None)
     //! }
     //! ```
-    if is_md5(value) {
-        return Some("MD5");
-    } else if is_sha1(value) {
-        return Some("SHA1");
-    } else if is_sha224(value) {
-        return Some("SHA224");
-    } else if is_sha256(value) {
-        return Some("SHA256");
-    } else if is_sha384(value) {
-        return Some("SHA384");
-    } else if is_sha512(value) {
-        return Some("SHA512");
+    for hash in Type::all() {
+        if hash.pattern().is_match(&value) {
+            return Some(hash.name())
+        }
     }
     None
 }

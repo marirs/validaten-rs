@@ -76,7 +76,6 @@ impl Type {
             Type::Ripple,
         ]
     }
-
 }
 
 /// Evaluate CryptoCurrency & Validate

@@ -28,7 +28,8 @@ path = "src/lib.rs"
 crypto = ["lazy_static"]
 hashes = ["lazy_static"]
 creditcard = ["lazy_static", "checkluhn"]
-validaten-all = ["crypto", "hashes", "creditcard"]
+networks = []
+validaten-all = ["crypto", "hashes", "creditcard", "networks"]
 
 [[example]]
 name = "crypto"

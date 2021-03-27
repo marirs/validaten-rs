@@ -1,7 +1,7 @@
 #[cfg(any(
 feature = "crypto",
 feature = "hashes",
-feature = "creditcard"
+feature = "creditcard",
 ))]
 #[macro_use]
 extern crate lazy_static;
@@ -14,3 +14,6 @@ pub mod hashes;
 
 #[cfg(feature = "creditcard")]
 pub mod creditcard;
+
+#[cfg(feature = "networks")]
+pub mod networks;

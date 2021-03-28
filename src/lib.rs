@@ -2,6 +2,7 @@
 feature = "crypto",
 feature = "hashes",
 feature = "creditcard",
+feature = "internet"
 ))]
 #[macro_use]
 extern crate lazy_static;
@@ -17,3 +18,6 @@ pub mod creditcard;
 
 #[cfg(feature = "networks")]
 pub mod networks;
+
+#[cfg(feature = "internet")]
+pub mod internet;

@@ -3,7 +3,7 @@ name = "validaten"
 version = "0.1.0"
 description = "Common validators for cryptocurrency, creditcards, domain, url, etc that can be used across projects"
 author = ["Marirs <marirs@gmail.com>"]
-categories = []
+categories = ["rust-patterns"]
 keywords = ["validate", "validators", "crypto", "creditcards", "email", "domain"]
 license-file = "LICENSE"
 readme = "README.md"
@@ -13,8 +13,8 @@ edition = "2018"
 
 [dependencies]
 checkluhn = { version = "0.0.1", optional = true }
-idna = "0.2"
-regex = "1"
+idna = { version = "0.2", optional = true }
+regex = { version = "1", optional = true }
 lazy_static = { version = "1", optional = true }
 
 [badges]
@@ -25,11 +25,12 @@ name = "validaten"
 path = "src/lib.rs"
 
 [features]
-crypto = ["lazy_static"]
-hashes = ["lazy_static"]
-creditcard = ["lazy_static", "checkluhn"]
-networks = []
-validaten-all = ["crypto", "hashes", "creditcard", "networks"]
+crypto = ["lazy_static", "regex"]
+hashes = ["lazy_static", "regex"]
+creditcard = ["lazy_static", "checkluhn", "regex"]
+networks = ["regex"]
+internet = ["idna", "lazy_static", "regex"]
+validaten-all = ["crypto", "hashes", "creditcard", "networks", "internet"]
 
 [[example]]
 name = "crypto"

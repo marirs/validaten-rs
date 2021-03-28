@@ -203,37 +203,37 @@ mod tests {
 
     #[test]
     fn test_is_hash_any() {
-        assert_eq!(is_hash_any("3f21"), false);
-        assert_eq!(is_hash_any("5eb63bbbe01eeed093cb22bb8f5acdc3"), true);
+        assert!(!is_hash_any("3f21"));
+        assert!(is_hash_any("5eb63bbbe01eeed093cb22bb8f5acdc3"));
     }
 
     #[test]
     fn test_is_md5() {
-        assert_eq!(is_md5("5eb63bbbe01eeed093cb22bb8f5acdc3"), true);
+        assert!(is_md5("5eb63bbbe01eeed093cb22bb8f5acdc3"));
     }
 
     #[test]
     fn test_is_sha1() {
-        assert_eq!(is_sha1("2AAE6C35C94FCFB415DBE95F408B9CE91EE846ED"), true);
+        assert!(is_sha1("2AAE6C35C94FCFB415DBE95F408B9CE91EE846ED"));
     }
 
     #[test]
     fn test_is_sha224() {
-        assert_eq!(is_sha224("2f05477fc24bb4faefd86517156dafdecec45b8ad3cf2522a563582b"), true);
+        assert!(is_sha224("2f05477fc24bb4faefd86517156dafdecec45b8ad3cf2522a563582b"));
     }
 
     #[test]
     fn test_is_sha256() {
-        assert_eq!(is_sha256("B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9"), true);
+        assert!(is_sha256("B94D27B9934D3E08A52E52D7DA7DABFAC484EFE37A5380EE9088F7ACE2EFCDE9"));
     }
 
     #[test]
     fn test_is_sha384() {
-        assert_eq!(is_sha384("fdbd8e75a67f29f701a4e040385e2e23986303ea10239211af907fcbb83578b3e417cb71ce646efd0819dd8c088de1bd"), true);
+        assert!(is_sha384("fdbd8e75a67f29f701a4e040385e2e23986303ea10239211af907fcbb83578b3e417cb71ce646efd0819dd8c088de1bd"));
     }
 
     #[test]
     fn test_is_sha512() {
-        assert_eq!(is_sha512("309ECC489C12D6EB4CC40F50C902F2B4D0ED77EE511A7C7A9BCD3CA86D4CD86F989DD35BC5FF499670DA34255B45B0CFD830E81F605DCF7DC5542E93AE9CD76F"), true);
+        assert!(is_sha512("309ECC489C12D6EB4CC40F50C902F2B4D0ED77EE511A7C7A9BCD3CA86D4CD86F989DD35BC5FF499670DA34255B45B0CFD830E81F605DCF7DC5542E93AE9CD76F"));
     }
 }

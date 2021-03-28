@@ -265,52 +265,52 @@ mod tests {
 
     #[test]
     fn test_is_cryptocurrency_any() {
-        assert_eq!(is_cryptocurrency_any("D6K2nqqQKycTucCSFSHhpiig4yQ6NPQRf9"), true);
-        assert_eq!(is_cryptocurrency_any("LQ4i7FLNbtJAFZq"), false);
+        assert!(is_cryptocurrency_any("D6K2nqqQKycTucCSFSHhpiig4yQ6NPQRf9"));
+        assert!(!is_cryptocurrency_any("LQ4i7FLNbtJAFZq"));
     }
 
     #[test]
     fn test_is_bitcoin() {
-        assert_eq!(is_bitcoin("1GiWxH6PzSSmbdcK72XfGpqhjSb6nae6h9"), true)
+        assert!(is_bitcoin("1GiWxH6PzSSmbdcK72XfGpqhjSb6nae6h9"))
     }
 
     #[test]
     fn test_is_bitcoin_cash() {
-        assert_eq!(is_bitcoin_cash("qppjlghjlwg6tgxv7ffhvs43rlul0kpp4c0shk4dr6"), true)
+        assert!(is_bitcoin_cash("qppjlghjlwg6tgxv7ffhvs43rlul0kpp4c0shk4dr6"))
     }
 
     #[test]
     fn test_is_ethereum() {
-        assert_eq!(is_ethereum("0xaae47eae4ddd4877e0ae0bc780cfaee3cc3b52cb"), true)
+        assert!(is_ethereum("0xaae47eae4ddd4877e0ae0bc780cfaee3cc3b52cb"))
     }
 
     #[test]
     fn test_is_litecoin() {
-        assert_eq!(is_litecoin("LQ4i7FLNhfCC9GXw682mS1NzvVKbtJAFZq"), true)
+        assert!(is_litecoin("LQ4i7FLNhfCC9GXw682mS1NzvVKbtJAFZq"))
     }
 
     #[test]
     fn test_is_dogecoin() {
-        assert_eq!(is_dogecoin("D6K2nqqQKycTucCSFSHhpiig4yQ6NPQRf9"), true)
+        assert!(is_dogecoin("D6K2nqqQKycTucCSFSHhpiig4yQ6NPQRf9"))
     }
 
     #[test]
     fn test_is_dash() {
-        assert_eq!(is_dash("XqLYPDTADW6EYuQmTcEAx81o8EHTKwqTK8"), true)
+        assert!(is_dash("XqLYPDTADW6EYuQmTcEAx81o8EHTKwqTK8"))
     }
 
     #[test]
     fn test_is_monero() {
-        assert_eq!(is_monero("41gYNjXMeXaTmZFVv645A1HRVoA637cXFGbDdLV8Gn5hLvfxfRLKigUTvm2HVZhBzDVPeGpDy71qxASTpRFgepDwLexA8Ti"), true)
+        assert!(is_monero("41gYNjXMeXaTmZFVv645A1HRVoA637cXFGbDdLV8Gn5hLvfxfRLKigUTvm2HVZhBzDVPeGpDy71qxASTpRFgepDwLexA8Ti"))
     }
 
     #[test]
     fn test_is_neo() {
-        assert_eq!(is_neo("AeHauBkGkHPTxh4PEUhNr7WRgivmcdCRnR"), true)
+        assert!(is_neo("AeHauBkGkHPTxh4PEUhNr7WRgivmcdCRnR"))
     }
 
     #[test]
     fn test_is_ripple() {
-        assert_eq!(is_ripple("rUocf1ixKzTuEe34kmVhRvGqNCofY1NJzV"), true)
+        assert!(is_ripple("rUocf1ixKzTuEe34kmVhRvGqNCofY1NJzV"))
     }
 }
